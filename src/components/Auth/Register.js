@@ -25,7 +25,9 @@ class Register extends Component {
 		super(props)
 		this.state = {
 			email: '',
-			login: '',
+			firstName: '',
+			lastName: '',
+			telephoneNumber: '',
 			password: '',
 			password2: '',
 			errors: {}
@@ -47,7 +49,9 @@ class Register extends Component {
 		e.preventDefault()
 		const userData = {
 			email: this.state.email,
-			login: this.state.login,
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			telephoneNumber: this.state.telephoneNumber,
 			password: this.state.password,
 			password2: this.state.password2
 		}
@@ -56,7 +60,6 @@ class Register extends Component {
 	}
 	render () {
 		const { classes } = this.props;
-		const { errors } = this.state;
 
 		return (
 			<Paper style={{ padding: 15}}>
@@ -68,18 +71,30 @@ class Register extends Component {
 						value={this.state.email}
 						onChange={this.handleChange}
 						name="email"
-						helperText={errors.email ? errors.email : ''}
-						error={errors.email ? true : false } 
 					/>
 					<TextField
-						label="Login"
+						label="Firtname"
 						type="text"
-						name="login"
-						value={this.state.login}
+						name="firstName"
+						value={this.state.firstName}
 						onChange={this.handleChange}
 						className={classes.textField}
-						helperText={errors.login ? errors.login : ''}
-						error={errors.login ? true : false }  
+					/>
+					<TextField
+						label="Lastname"
+						type="text"
+						name="lastName"
+						value={this.state.lastName}
+						onChange={this.handleChange}
+						className={classes.textField}
+					/>
+					<TextField
+						label="Phone"
+						type="text"
+						name="telephoneNumber"
+						value={this.state.telephoneNumber}
+						onChange={this.handleChange}
+						className={classes.textField}
 					/>
 					<TextField
 						label="Password"
@@ -88,8 +103,6 @@ class Register extends Component {
 						value={this.state.password}
 						onChange={this.handleChange}
 						className={classes.textField}
-						helperText={errors.password ? errors.password : ''}
-						error={errors.password ? true : false } 
 					/>
 					<TextField
 						label="Repeat password"
@@ -98,8 +111,6 @@ class Register extends Component {
 						value={this.state.password2}
 						onChange={this.handleChange}
 						className={classes.textField}
-						helperText={errors.password2 ? errors.password2 : ''}
-						error={errors.password2 ? true : false } 
 					/>
 					<div className={classes.btnBlock}>
 						<Button variant="outlined" type="submit">
